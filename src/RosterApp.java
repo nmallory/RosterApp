@@ -7,10 +7,9 @@ public class RosterApp {
 public static void main(String[] args) {
 		
 		//Create scanner
-		//Scanner console = new Scanner(System.in);
 		Scanner sc = new Scanner(System.in);
 		
-		//variables
+		//Variables
 		boolean  choice = true;
 		
 		
@@ -94,8 +93,7 @@ public static void main(String[] args) {
 		// Prompt user to ask about a particular user
 			System.out.println("Which student would you like to learn more about? (enter a number 1-20):");
 			int number  = sc.nextInt( );
-			
-
+		
 			//Validate number entered to make sure it is within the array index	
 			if(number < 1 || number > studentArray.length){
 				System.out.println("That student does not exist. Please try again.");
@@ -127,13 +125,15 @@ public static void main(String[] args) {
         System.out.println("Would you like to know more? (enter 'y' or 'n'):");
         input = sc.nextLine();
         
+        //If user inputs y, student's hometown is displayed
         if(input.equalsIgnoreCase("y")){
             System.out.println(studentArray[number-1] + " is from " + studentHometown[number-1]);
-        
-        	}
+          
+        	
         }
-
-	
+        }else if(input.equalsIgnoreCase("n"))
+    		System.out.println("Thanks");
+     	
 		 //While loop to start program over if user enters yes
 	   }while(true);
 	
