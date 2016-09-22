@@ -95,17 +95,12 @@ public static void main(String[] args) {
 			System.out.println("Which student would you like to learn more about? (enter a number 1-20):");
 			int number  = sc.nextInt( );
 			
-		//Validate number entered to make sure it is within the array index
-			while(number < 0 || number >studentArray.length){
-				System.out.println("That student does not exist. Please try again. (enter a number 1-20:)");
-				sc.nextInt();
-				break;
+
+			//Validate number entered to make sure it is within the array index	
+			if(number < 1 || number > studentArray.length){
+				System.out.println("That student does not exist. Please try again.");
+				continue;	
 			}
-		/*if(number < 0 || number > studentArray.length){
-			System.out.println("That student does not exist. Please try again. (enter a number 1-20:)");
-			sc.nextInt();
-			continue;	
-		}*/
 	
 		System.out.println("Student "  + number + " is " + studentArray[number-1]);
 		System.out.println("What would you like to know about " + studentArray[number-1] + "? (enter 'hometown' or 'favorite food'):");
@@ -137,20 +132,12 @@ public static void main(String[] args) {
         
         	}
         }
-        
-    	
-    	/*if(input.equalsIgnoreCase("y")){
-    		choice = true;
-    	}else{
-    		
-    		choice = false; 
-    	
-    	}*/
+
 	
 		 //While loop to start program over if user enters yes
 	   }while(true);
 	
-	}
+	}//psvm
 }
 			
 		
