@@ -1,4 +1,3 @@
-
 import java.io.Console;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -8,11 +7,12 @@ public class RosterApp {
 public static void main(String[] args) {
 		
 		//Create scanner
-		Scanner console = new Scanner(System.in);
+		//Scanner console = new Scanner(System.in);
 		Scanner sc = new Scanner(System.in);
 		
 		//variables
-		String choice ="yes";
+		boolean  choice = true;
+		
 		
 		 //Declare an array that allocates 20 indexes for student name
 	
@@ -89,67 +89,69 @@ public static void main(String[] args) {
 		
 	
 		//Welcome message
-		
 		System.out.println("Welcome to our Java Class");
 		do{
 		// Prompt user to ask about a particular user
-			
 			System.out.println("Which student would you like to learn more about? (enter a number 1-20):");
-			int number  = console.nextInt( );
+			int number  = sc.nextInt( );
 			
 		//Validate number entered to make sure it is within the array index
-		if(number < 0 || number > studentArray.length){
+			while(number < 0 || number >studentArray.length){
+				System.out.println("That student does not exist. Please try again. (enter a number 1-20:)");
+				sc.nextInt();
+				break;
+			}
+		/*if(number < 0 || number > studentArray.length){
 			System.out.println("That student does not exist. Please try again. (enter a number 1-20:)");
-			continue;
-		}
-			
-		while(studentArray.length > 1) {
-			System.out.println("Student "  + number + " is " + studentArray[number]);
-			break;
-			
-		}
-		
-		while (studentHometown.length >1) {
-		
-			System.out.println("What would you like to know about " + studentArray[number] + "? (enter 'hometown' or 'favorite food'):");
-			
-			String input = sc.nextLine();
-		
-			
-			//Validate input to ensure that hometown or favorite food is entered
-			/*if(number < 0 || number > studentArray.length){
-				System.out.println("TThat data does not exist. Please try again. (enter 'hometown' or 'favorite food':)");
-				continue;
-			}*/
-			
-			System.out.println(studentArray[number] + " is from " + studentHometown[number]);
-		
-			break;
-			
-		}
-		
-		while (studentFood.length >1) {
-			System.out.println("Would you like to know more? (enter 'y' or 'n'):");
+			sc.nextInt();
+			continue;	
+		}*/
 	
-			String input = sc.nextLine();
-			
-			System.out.println(studentArray[number] + " loves " + studentFood[number]);
-			
-			break;
-			
-		}
-		System.out.println("Would you like to find out about another student? (enter 'y' or 'n'):");
-
-		String input = sc.nextLine();
-		
+		System.out.println("Student "  + number + " is " + studentArray[number-1]);
+		System.out.println("What would you like to know about " + studentArray[number-1] + "? (enter 'hometown' or 'favorite food'):");
+        sc.nextLine();
+        String input = sc.nextLine();
+    
+        //If user input is hometown prints out student name and hometown
+        if(input.equalsIgnoreCase("hometown")){
+        System.out.println(studentArray[number-1] + " is from " + studentHometown[number-1]); //pushes 0 element out of way to reference 0 index    	
+        
+        //Ask user if they would like to know more about student
+        System.out.println("Would you like to know more? (enter 'y' or 'n'):");
+        //prompt for an input and if y then display food
+        input = sc.nextLine();
+        
+        if(input.equals("y")){
+        System.out.println(studentArray[number-1] + " loves " + studentFood[number-1]);
+        
+        }
+        }else if(input.equalsIgnoreCase("favorite food")){
+     
+        //Prints out student name and favorite food
+        System.out.println(studentArray[number-1] + " loves " + studentFood[number-1]);	
+        System.out.println("Would you like to know more? (enter 'y' or 'n'):");
+        input = sc.nextLine();
+        
+        if(input.equalsIgnoreCase("y")){
+            System.out.println(studentArray[number-1] + " is from " + studentHometown[number-1]);
+        
+        	}
+        }
+        
+    	
+    	/*if(input.equalsIgnoreCase("y")){
+    		choice = true;
+    	}else{
+    		
+    		choice = false; 
+    	
+    	}*/
 	
-		}while(!choice.equalsIgnoreCase("y"));
-			
+		 //While loop to start program over if user enters yes
+	   }while(true);
+	
 	}
 }
-				
+			
 		
-		
-
-
 		
